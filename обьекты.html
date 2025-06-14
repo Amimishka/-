@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>РКИС Практика: Объекты</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { margin-top: 20px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; }
+        button { margin: 5px; padding: 10px; }
+        input { margin: 5px; padding: 5px; }
+        .task { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>РКИС Практика: Объекты</h1>
+
+    <!-- Задача 1: Високосный год -->
+    <div class="task">
+        <h2>1. Проверка високосного года</h2>
+        <input id="yearInput" type="number" placeholder="Введите год">
+        <button onclick="checkLeapYear()">Проверить</button>// вот тут короче 
+        <pre id="leapYearResult"></pre>
+    </div>
+
+    <!-- Задача 2: Ладья -->
+    <div class="task">
+        <h2>2. Проверка хода ладьи</h2>
+        <input id="rookRow" type="number" placeholder="Строка ладьи (1-8)">
+        <input id="rookCol" type="number" placeholder="Столбец ладьи (1-8)">
+        <input id="targetRow" type="number" placeholder="Строка фигуры (1-8)">
+        <input id="targetCol" type="number" placeholder="Столбец фигуры (1-8)">
+        <button onclick="checkRookMove()">Проверить</button><!-- Крутая функция проверяет совпадение -->
+        <pre id="rookResult"></pre>
+    </div>
+
+    <!-- Задача 3: умные студенты у них бал больше 4 -->
+    <div class="task">
+        <h2>3. Студенты с баллом > 4.0</h2>
+        <button onclick="showStudents()">Показать студентов</button>
+        <pre id="studentsResult"></pre>
+    </div>
+
+    <!-- Задача 4: Слон -->
+    <div class="task">
+        <h2>4. Проверка хода слона</h2>
+        <input id="bishopRow" type="number" placeholder="Строка слона (1-8)">
+        <input id="bishopCol" type="number" placeholder="Столбец слона (1-8)">
+        <input id="targetBishopRow" type="number" placeholder="Строка фигуры (1-8)">
+        <input id="targetBishopCol" type="number" placeholder="Столбец фигуры (1-8)">
+        <button onclick="checkBishopMove()">Проверить</button>
+        <pre id="bishopResult"></pre>
+    </div>
+
+    <!-- Задача 5: Проверка строки -->
+    <div class="task">
+        <h2>5. Проверка строки на 'a'</h2>
+        <input id="stringInput" type="text" placeholder="Введите строку">
+        <button onclick="checkString()">Проверить</button>
+        <pre id="stringResult"></pre>
+    </div>
+
+    <!-- Задача 6: Автомобиль -->
+    <div class="task">
+        <h2>6. Случайное свойство автомобиля</h2>
+        <button onclick="showRandomCarProperty()">Показать</button>
+        <pre id="carResult"></pre>
+    </div>
+
+    <!-- Задача 7: Ферзь -->
+    <div class="task">
+        <h2>7. Проверка хода ферзя</h2>
+        <input id="queenRow" type="number" placeholder="Строка ферзя (1-8)">
+        <input id="queenCol" type="number" placeholder="Столбец ферзя (1-8)">
+        <input id="targetQueenRow" type="number" placeholder="Строка фигуры (1-8)">
+        <input id="targetQueenCol" type="number" placeholder="Столбец фигуры (1-8)">
+        <button onclick="checkQueenMove()">Проверить</button>
+        <pre id="queenResult"></pre>
+    </div>
+
+    <!-- Задача 8: Массив объектов -->
+    <div class="task">
+        <h2>8. Создание массива случайных объектов</h2>
+        <button onclick="createRandomArray()">Создать массив</button>
+        <pre id="randomArrayResult"></pre>
+    </div>
+
+    <!-- Задача 9: Статус читателей -->
+    <div class="task">
+        <h2>9. Статус читателей</h2>
+        <button onclick="showReaders()">Показать статус</button>
+        <pre id="readersResult"></pre>
+    </div>
+
+    <!-- Задача 10: Сортировка массива объектов -->
+    <div class="task">
+        <h2>10. Сортировка массива объектов</h2>
+        <button onclick="sortObjects()">Сортировать</button>
+        <pre id="sortResult"></pre>
+    </div>
+
+    <!-- Задача 11: Объект в список пар -->
+    <div class="task">
+        <h2>11. Объект в список пар [key, value]</h2>
+        <button onclick="objectToPairs()">Преобразовать</button>
+        <pre id="pairsResult"></pre>
+    </div>
+
+    <!-- Задача 12: Проверка свойств -->
+    <div class="task">
+        <h2>12. Проверка свойств объекта</h2>
+        <input id="propInput" type="text" placeholder="Введите свойство">
+        <button onclick="checkProperty()">Проверить</button>
+        <pre id="propResult"></pre>
+    </div>
+
+    <!-- Задача 13: Описание городов -->
+    <div class="task">
+        <h2>13. Описание городов</h2>
+        <button onclick="showCities()">Показать описание</button>
+        <pre id="citiesResult"></pre>
+    </div>
+
+    <!-- Задача 14: Удаление объекта -->
+    <div class="task">
+        <h2>14. Удаление объекта по свойству</h2>
+        <input id="deletePropInput" type="text" placeholder="Введите значение свойства">
+        <button onclick="deleteObjectByProp()">Удалить</button>
+        <pre id="deleteResult"></pre>
+    </div>
+
+    <!-- Задача 15: Перемножение свойств -->
+    <div class="task">
+        <h2>15. Перемножение числовых свойств</h2>
+        <input id="multiplyInput" type="number" placeholder="Введите число">
+        <button onclick="multiplyProperties()">Проверить</button>
+        <pre id="multiplyResult"></pre>
+    </div>
+
+    <!-- Задача 16: Гласные и согласные -->
+    <div class="task">
+        <h2>16. Подсчет гласных и согласных</h2>
+        <input id="vowelInput" type="text" placeholder="Введите строку">
+        <button onclick="countLetters()">Подсчитать</button>
+        <pre id="vowelResult"></pre>
+    </div>
+
+    <!-- Задача 17: Уникальные числовые свойства -->
+    <div class="task">
+        <h2>17. Уникальные числовые свойства</h2>
+        <button onclick="showUniqueNumbers()">Показать</button>
+        <pre id="uniqueResult"></pre>
+    </div>
+
+    <!-- Задача 18: Котлеты -->
+    <div class="task">
+        <h2>18. Время на жарку котлет</h2>
+        <input id="kInput" type="number" placeholder="Котлет на сковороде">
+        <input id="mInput" type="number" placeholder="Минут на сторону">
+        <input id="nInput" type="number" placeholder="Всего котлет">
+        <button onclick="calculateFryTime()">Рассчитать</button>
+        <pre id="fryResult"></pre>
+    </div>
+
+    <!-- Задача 19: День недели -->
+    <div class="task">
+        <h2>19. Номер дня недели</h2>
+        <input id="dayInput" type="number" placeholder="Введите число">
+        <button onclick="getDayName()">Проверить</button>
+        <pre id="dayResult"></pre>
+    </div>
+
+    <!-- Задача 20: Наименьшее свойство -->
+    <div class="task">
+        <h2>20. Наименьшее числовое свойство</h2>
+        <button onclick="showMinNumber()">Показать</button>
+        <pre id="minNumberResult"></pre>
+    </div>
+
+    <!-- Задача 21: Координатная плоскость -->
+    <div class="task">
+        <h2>21. Часть координатной плоскости</h2>
+        <button onclick="getQuadrant()">Проверить</button>
+        <pre id="quadrantResult"></pre>
+    </div>
+
+    <!-- Задача 22: Наименьшая строковое свойство -->
+    <div class="task">
+        <h2>22. Наименьшее строковое свойство</h2>
+        <button onclick="showMinString()">Показать</button>
+        <pre id="minStringResult"></pre>
+    </div>
+
+    <!-- Задача 23: Умножение на случайное -->
+    <div class="task">
+        <h2>23. Умножение числовых свойств</h2>
+        <button onclick="multiplyRandom()">Умножить</button>
+        <pre id="multiplyRandomResult"></pre>
+    </div>
+
+    <!-- Задача 24: Билеты в метро -->
+    <div class="task">
+        <h2>24. Билеты в метро</h2>
+        <input id="tripsInput" type="number" placeholder="Количество поездок">
+        <button onclick="calculateTickets()">Рассчитать</button>
+        <pre id="ticketsResult"></pre>
+    </div>
+
+    <!-- Задача 25: Копирование свойств -->
+    <div class="task">
+        <h2>25. Копирование свойств</h2>
+        <button onclick="copyProperties()">Скопировать</button>
+        <pre id="copyResult"></pre>
+    </div>
+
+    <!-- Задача 26: Преобразование объекта -->
+    <div class="task">
+        <h2>26. Преобразование объекта (color='blue')</h2>
+        <button onclick="transformToArray()">Преобразовать</button>
+        <pre id="transformResult"></pre>
+    </div>
+<script>
+        // Задача 1: Високосный год
+        function checkLeapYear() {
+            const year = parseInt(document.getElementById('yearInput').value);
+            const isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+            document.getElementById('leapYearResult').textContent = isLeap ? 
+                `${year} - високосный год` : `${year} - не високосный год`;
+        }
+
+        // Задача 2: Ладья
+        function checkRookMove() {
+            const rookRow = parseInt(document.getElementById('rookRow').value);
+            const rookCol = parseInt(document.getElementById('rookCol').value);
+            const targetRow = parseInt(document.getElementById('targetRow').value);
+            const targetCol = parseInt(document.getElementById('targetCol').value);
+            const canHit = rookRow === targetRow || rookCol === targetCol;
+            document.getElementById('rookResult').textContent = canHit ?
+                `Ладья бьет фигуру` : `Ладья не бьет фигуру`;
+        }
+
+        // Задача 3: Студенты
+        const students = [
+            { name: "Иванов И.И.", group: "ГР1", grades: [4, 5, 3, 4, 5] },
+            { name: "Петров П.П.", group: "ГР2", grades: [3, 3, 3, 4, 3] },
+            { name: "Сидоров С.С.", group: "ГР1", grades: [5, 5, 4, 5, 5] }
+        ];
+
+        function showStudents() {
+            let result = '';
+            let found = false;
+            students.forEach(student => {
+                const avg = student.grades.reduce((sum, grade) => sum + grade, 0) / student.grades.length;
+                if (avg > 4.0) {
+                    result += `${student.name}, группа: ${student.group}, средний балл: ${avg.toFixed(1)}\n`;
+                    found = true;
+                }
+            });
+            document.getElementById('studentsResult').textContent = found ? result : "Студентов с баллом > 4.0 нет";
+        }
+
+        // Задача 4: Слон
+        function checkBishopMove() {
+            const bishopRow = parseInt(document.getElementById('bishopRow').value);
+            const bishopCol = parseInt(document.getElementById('bishopCol').value);
+            const targetRow = parseInt(document.getElementById('targetBishopRow').value);
+            const targetCol = parseInt(document.getElementById('targetBishopCol').value);
+            const canHit = Math.abs(bishopRow - targetRow) === Math.abs(bishopCol - targetCol);
+            document.getElementById('bishopResult').textContent = canHit ?
+                `Слон бьет фигуру` : `Слон не бьет фигуру`;
+        }
+
+        // Задача 5: Проверка строки
+        const obj = { str: "abcde", flag: true };
+        function checkString() {
+            const input = document.getElementById('stringInput').value;
+            obj.str = input;
+            const result = input.startsWith('a') ? obj.flag : false;
+            document.getElementById('stringResult').textContent = `Результат: ${result}`;
+        }
+
+        // Задача 6: Автомобиль
+        const car = { brand: "Toyota", model: "Camry", year: 2020, color: "Silver" };
+        function showRandomCarProperty() {
+            const keys = Object.keys(car);
+            const randomKey = keys[Math.floor(Math.random() * keys.length)];
+            document.getElementById('carResult').textContent = `${randomKey}: ${car[randomKey]}`;
+        }
+
+        // Задача 7: Ферзь
+        function checkQueenMove() {
+            const queenRow = parseInt(document.getElementById('queenRow').value);
+            const queenCol = parseInt(document.getElementById('queenCol').value);
+            const targetRow = parseInt(document.getElementById('targetQueenRow').value);
+            const targetCol = parseInt(document.getElementById('targetQueenCol').value);
+            const canHit = queenRow === targetRow || queenCol === targetCol ||
+                Math.abs(queenRow - targetRow) === Math.abs(queenCol - targetCol);
+            document.getElementById('queenResult').textContent = canHit ?
+                `Ферзь бьет фигуру` : `Ферзь не бьет фигуру`;
+        }
+
+        // Задача 8: Массив случайных объектов
+        function createRandomArray() {
+            const array = [];
+            for (let i = 0; i < 3; i++) {
+                array.push({
+                    id: i + 1,
+                    value: Math.floor(Math.random() * 100),
+                    name: `Объект ${i + 1}`
+                });
+            }
+            document.getElementById('randomArrayResult').textContent = JSON.stringify(array, null, 2);
+        }
+
+        // Задача 9: Статус читателей
+        const readers = [
+            { book: "Война и мир", author: "Л. Толстой", status: "Читает" },
+            { book: "1984", author: "Дж. Оруэлл", status: "Прочитано" },
+            { book: "Мастер и Маргарита", author: "М. Булгаков", status: "В плане" }
+        ];
+
+        function showReaders() {
+            let result = '';
+            readers.forEach(reader => {
+                result += `Книга: ${reader.book}, Автор: ${reader.author}, Статус: ${reader.status}\n`;
+            });
+            document.getElementById('readersResult').textContent = result;
+        }
+
+        // Задача 10: Сортировка массива объектов
+        const sortableObjects = [
+            { name: "Объект C", value: 30 },
+            { name: "Объект A", value: 10 },
+            { name: "Объект B", value: 20 }
+        ];
+
+        function sortObjects() {
+            const sorted = [...sortableObjects].sort((a, b) => a.value - b.value);
+            document.getElementById('sortResult').textContent = JSON.stringify(sorted, null, 2);
+        }
+
+        // Задача 11: Объект в список пар
+        const sampleObject = { a: 1, b: 2, c: 3 };
+        function objectToPairs() {
+            const pairs = Object.entries(sampleObject);
+            document.getElementById('pairsResult').textContent = JSON.stringify(pairs, null, 2);
+        }
+
+        // Задача 12: Проверка свойств
+        const checkObj = { name: "Test", age: 25, city: "Moscow" };
+        function checkProperty() {
+            const prop = document.getElementById('propInput').value;
+            const hasProp = prop in checkObj;
+            document.getElementById('propResult').textContent = hasProp ?
+                `Свойство ${prop} существует` : `Свойство ${prop} не существует`;
+        }
+
+        // Задача 13: Описание городов
+        const city1 = {
+            name: "Москва",
+            population: 12000000,
+            getDescription: function() {
+                return `${this.name}: население ${this.population}`;
+            }
+        };
+        const city2 = {
+            name: "Санкт-Петербург",
+            population: 5000000,
+            getDescription: function() {
+                return `${this.name}: население ${this.population}`;
+            }
+        };
+
+        function showCities() {
+            document.getElementById('citiesResult').textContent = 
+                `${city1.getDescription()}\n${city2.getDescription()}`;
+        }
+
+        // Задача 14: Удаление объекта по свойству
+        let objectsArray = [
+            { id: 1, value: "A" },
+            { id: 2, value: "B" },
+            { id: 3, value: "C" }
+        ];
+
+        function deleteObjectByProp() {
+            const value = document.getElementById('deletePropInput').value;
+            objectsArray = objectsArray.filter(obj => obj.value !== value);
+            document.getElementById('deleteResult').textContent = JSON.stringify(objectsArray, null, 2);
+        }
+
+        // Задача 15: Перемножение числовых свойств
+        const numObj = { a: 2, b: 3, c: 4 };
+        function multiplyProperties() {
+            const target = parseInt(document.getElementById('multiplyInput').value);
+            const product = Object.values(numObj).reduce((prod, val) => prod * val, 1);
+            document.getElementById('multiplyResult').textContent = 
+                product === target ? `Произведение равно ${target}` : `Произведение (${product}) не равно ${target}`;
+        }
+
+        // Задача 16: Гласные и согласные
+        function countLetters() {
+            const str = document.getElementById('vowelInput').value.toLowerCase();
+            const vowels = 'аеёиоуыэюя';
+            let vowelCount = 0, consonantCount = 0;
+            for (let char of str) {
+                if (vowels.includes(char)) vowelCount++;
+                else if (/[а-яё]/.test(char)) consonantCount++;
+            }
+            document.getElementById('vowelResult').textContent = 
+                `Гласные: ${vowelCount}, Согласные: ${consonantCount}`;
+        }
+
+        // Задача 17: Уникальные числовые свойства
+        const uniqueObj = { a: 1, b: 2, c: 1, d: 3 };
+        function uniqueValues() {
+            const values = Object.values(uniqueObj);
+            const unique = [...new Set(values)];
+            document.getElementById('uniqueResult').textContent = `Уникальные значения: ${unique.join(', ')}`;
+        }
+
+        // Задача 18: Котлеты
+        function calculateFryTime() {
+            const k = parseInt(document.getElementById('kInput').value);
+            const m = parseInt(document.getElementById('mInput').value);
+            const n = parseInt(document.getElementById('nInput').value);
+            const batches = Math.ceil(n / k);
+            const time = batches * m * 2;
+            document.getElementById('fryResult').textContent = `Время: ${time} минут`;
+        }
+
+        // Задача 19: День недели
+        function getDayName() {
+            const day = parseInt(document.getElementById('dayInput').value);
+            const days = ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+            document.getElementById('dayResult').textContent = day >= 1 && day <= 7 ?
+                days[day - 1] : "Ошибка: введите число от 1 до 7";
+        }
+
+        // Задача 20: Наименьшее числовое свойство
+        const minNumObj = { a: 5, b: 2, c: 8 };
+        function showMinNumber() {
+            const min = Math.min(...Object.values(minNumObj));
+            document.getElementById('minNumberResult').textContent = `Наименьшее: ${min}`;
+        }
+
+        // Задача 21: Координатная плоскость
+        const coordObj = { x: 3, y: -2 };
+        function getQuadrant() {
+            const { x, y } = coordObj;
+            let quadrant;
+            if (x > 0 && y > 0) quadrant = "I";
+            else if (x < 0 && y > 0) quadrant = "II";
+            else if (x < 0 && y < 0) quadrant = "III";
+            else if (x > 0 && y < 0) quadrant = "IV";
+            else quadrant = "На оси";
+            document.getElementById('quadrantResult').textContent = `Четверть: ${quadrant}`;
+        }
+
+        // Задача 22: Наименьшее строковое свойство
+        const stringObj = { a: "banana", b: "apple", c: "cherry" };
+        function showMinString() {
+            const min = Object.values(stringObj).sort()[0];
+            document.getElementById('minStringResult').textContent = `Наименьшее: ${min}`;
+        }
+
+        // Задача 23: Умножение числовых свойств
+        const randomMultObj = { a: 2, b: 3, c: 4 };
+        function multiplyRandom() {
+            const values = Object.values(randomMultObj);
+            const min = Math.min(...values);
+            const max = Math.max(...values);
+            for (let key in randomMultObj) {
+                const random = min + Math.random() * (max - min);
+                randomMultObj[key] *= random;
+            }
+            document.getElementById('multiplyRandomResult').textContent = JSON.stringify(randomMultObj, null, 2);
+        }
+
+        // Задача 24: Билеты в метро
+        function calculateTickets() {
+            const n = parseInt(document.getElementById('tripsInput').value);
+            let minCost = Infinity;
+            let bestTickets = [0, 0, 0];
+            for (let t60 = 0; t60 * 60 <= n + 60; t60++) {
+                for (let t10 = 0; t10 * 10 <= n + 10; t10++) {
+                    const tripsLeft = n - (t60 * 60 + t10 * 10);
+                    if (tripsLeft >= 0) {
+                        const t1 = tripsLeft;
+                        const cost = t1 * 15 + t10 * 125 + t60 * 440;
+                        if (cost < minCost) {
+                            minCost = cost;
+                            bestTickets = [t1, t10, t60];
+                        }
+                    }
+                }
+            }
+            document.getElementById('ticketsResult').textContent = 
+                `Билеты: ${bestTickets[0]} на 1, ${bestTickets[1]} на 10, ${bestTickets[2]} на 60 поездок`;
+        }
+
+        // Задача 25: Копирование свойств
+        const sourceObj = { a: 1, b: "test", c: 3 };
+        const targetObj = { a: 2, b: "test", d: 4 };
+        function copyProperties() {
+            for (let key in sourceObj) {
+                if (sourceObj[key] !== targetObj[key]) {
+                    targetObj[key] = sourceObj[key];
+                }
+            }
+            document.getElementById('copyResult').textContent = JSON.stringify(targetObj, null, 2);
+        }
+
+        // Задача 26: Преобразование объекта
+        const transformObj = { name: "Item", color: "blue", value: 42 };
+        function transformToArray() {
+            if (transformObj.color === "blue") {
+                const array = Object.values(transformObj);
+                document.getElementById('transformResult').textContent = JSON.stringify(array, null, 2);
+            } else {
+                document.getElementById('transformResult').textContent = "Цвет не blue";
+            }
+        }
+    </script>
+</body>
+</html>
